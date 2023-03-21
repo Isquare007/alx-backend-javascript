@@ -1,10 +1,7 @@
 export default function guardrail(mathFunction) {
-    const queue = [];
-    const msg = 'Guardrail was processed';
     try {
-      queue.push(mathFunction(), msg);
+      return [mathFunction(), 'Guardrail was processed'];
     } catch (err) {
-      queue.push(`Error: ${err.message}`, msg);
+      return [err.toString(), 'Guardrail was processed'];
     }
-    return queue;
   }
