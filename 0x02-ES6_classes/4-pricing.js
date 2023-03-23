@@ -29,7 +29,7 @@ class Pricing {
   }
 
   displayFullPrice() {
-    return `${this._amount} ${this.currency.name} ${(this.currency.code)}`;
+    return `${this._amount} ${this.currency.name} (${this.currency.code})`;
   }
 
   static convertPrice(amount, conversionRate) {
