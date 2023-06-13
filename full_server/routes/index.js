@@ -1,9 +1,10 @@
-import express from 'express';
 import AppController from '../controllers/AppController';
 import StudentsController from '../controllers/StudentsController';
 
+const express = require('express');
+const app = express();
+
 function controllerRouting(app) {
-  const router = express.Router();
   app.use('/', router);
 
   router.get('/', (req, res) => {
@@ -11,7 +12,7 @@ function controllerRouting(app) {
   });
 
   router.get('/students', (req, res) => {
-    StudentsController.getAllStudents(req, res, process.argv[2]);
+    StudentsController.getAllStudents(req, res, process.agrv[2]);
   });
 
   router.get('/students/:major', (req, res) => {

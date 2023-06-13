@@ -1,7 +1,7 @@
 class AppController {
   static getHomepage(request, response) {
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.end('Hello Holberton School!')
+    response.send(200, 'Hello Holberton School!');
   }
 }
-module.exports = AppController
+
+export default AppController;

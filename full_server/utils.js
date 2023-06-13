@@ -1,17 +1,26 @@
-const fs = require('fs');
+const fs = require('fs')
 
 function readDatabase(path) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
-        reject(Error(err));
+        reject(Error('Cannot load the database'));
         return;
       }
+      const response = [];
+      let msg;
+
       const content = data.toString().split('\n');
 
       let students = content.filter((item) => item);
 
       students = students.map((item) => item.split(','));
+
+      const noStudents = students.length ? students.length - 1 : 0;
+      msg = `Number of students: ${noStudents}`;
+      console.log(msg);
+
+      response.push(msg);
 
       const fields = {};
       for (const i in students) {
@@ -24,11 +33,16 @@ function readDatabase(path) {
 
       delete fields.field;
 
-      resolve(fields);
+      for (const key of Object.keys(fields)) {
+        msg = `Number of students in ${key}: ${fields[key].length
+          }. List: ${fields[key].join(', ')}`;
 
-      //   return fields;
+        console.log(msg);
+
+        response.push(msg);
+      }
+      resolve(response);
     });
   });
 }
-
-export default readDatabase;
+export default readDatabase
