@@ -10,7 +10,7 @@ function calculateNumber(type, a, b) {
   }
   if (type === 'DIVIDE') {
     if (roundedB === 0) {
-      return 'Error'
+      return 'Error';
     }
     return roundedA / roundedB;
   }
