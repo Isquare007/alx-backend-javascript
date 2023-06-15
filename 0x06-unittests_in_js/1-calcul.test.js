@@ -11,8 +11,8 @@ describe('calculateNumber', () => {
 
   describe('SUBTRACT', () => {
     it('should return the difference of rounded numbers', () => {
-      assert.strictEqual(calculateNumber('SUBTRACT', 4.2, 10.8), 7);
-      assert.strictEqual(calculateNumber('SUBTRACT', 2.9, 6.1), 3);
+      assert.strictEqual(calculateNumber('SUBTRACT', 10.8, 4.2), 7);
+      assert.strictEqual(calculateNumber('SUBTRACT', 6.1, 2.9), 3);
     });
   });
 

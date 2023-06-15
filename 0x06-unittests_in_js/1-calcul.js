@@ -6,7 +6,7 @@ function calculateNumber(type, a, b) {
     return roundedA + roundedB;
   }
   if (type === 'SUBTRACT') {
-    return roundedB - roundedA;
+    return roundedA - roundedB;
   }
   if (type === 'DIVIDE') {
     if (roundedB === 0) {
