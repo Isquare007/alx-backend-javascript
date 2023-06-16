@@ -1,9 +1,15 @@
-const { expect } = require('chai');
-const { getPaymentTokenFromAPI } = require('./6-payment_token');
+const getPaymentTokenFromAPI = require('./6-payment_token');
+var { expect } = require('chai');
 
-describe('getPaymentTokenFromAPI', () => {
-  it('should return a resolved promise with the expected object when success is true', async () => {
-    const result = await getPaymentTokenFromAPI(true);
-    expect(result).to.deep.equal({ data: 'Successful response from the API' });
+describe('getPaymentTokenFromAPI', function () {
+  describe('arg true', function () {
+    it('resolved correctly', function (done) {
+      getPaymentTokenFromAPI(true)
+        .then((res) => {
+          expect(res).to.include({ data: 'Successful response from the API' });
+          done();
+        })
+        .catch((err) => done(err));
+    });
   });
 });
