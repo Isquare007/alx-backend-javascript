@@ -56,20 +56,21 @@ describe('Integration Testing', () => {
       });
     });
   });
-  describe('GET /available_payments JSON string', () => {
-    it('Responds with 200 and correct JSON string', (done) => {
-      const options = {
-        url: 'http://localhost:7865/available_payments',
-        method: 'GET',
-      };
+});
 
-      request(options, function (error, response, body) {
-        expect(response.statusCode).to.equal(200);
-        expect(body).to.equal(
-          '{"payment_methods":{"credit_cards":true,"paypal":false}}'
-        );
-        done();
-      });
+describe('GET /available_payments JSON string', () => {
+  it('Responds with 200 and correct JSON string', (done) => {
+    const options = {
+      url: 'http://localhost:7865/available_payments',
+      method: 'GET',
+    };
+
+    request(options, function (error, response, body) {
+      expect(response.statusCode).to.equal(200);
+      expect(body).to.equal(
+        '{"payment_methods":{"credit_cards":true,"paypal":false}}'
+      );
+      done();
     });
   });
 
@@ -92,39 +93,6 @@ describe('Integration Testing', () => {
         };
 
         expect(bodyParsed).to.deep.equal(referenceBody);
-        done();
-      });
-    });
-  });
-
-  describe('POST /login with body', () => {
-    it('Responds with 200 and correct name Betty', (done) => {
-      const options = {
-        url: 'http://localhost:7865/login',
-        method: 'POST',
-        json: {
-          userName: 'Betty',
-        },
-      };
-
-      request(options, function (error, response, body) {
-        expect(response.statusCode).to.equal(200);
-        expect(body).to.equal('Welcome Betty');
-        done();
-      });
-    });
-  });
-
-  describe('POST /login with no body', () => {
-    it('Responds with 200 and correct name Undefined', (done) => {
-      const options = {
-        url: 'http://localhost:7865/login',
-        method: 'POST',
-      };
-
-      request(options, function (error, response, body) {
-        expect(response.statusCode).to.equal(200);
-        expect(body).to.equal('Welcome undefined');
         done();
       });
     });

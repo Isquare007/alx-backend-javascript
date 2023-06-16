@@ -1,7 +1,9 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
+const port = 7865
 const app = express();
-const port = 7865;
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.end('Welcome to the payment system');
@@ -12,18 +14,18 @@ app.get('/cart/:id([0-9]+)', (req, res) => {
 });
 
 app.get('/available_payments', (req, res) => {
-  const dict = {
+  const availablePayments = {
     payment_methods: {
       credit_cards: true,
       paypal: false
-    },
+    }
   };
-  res.json(dict)
+  res.json(availablePayments);
 });
 
 app.post('/login', (req, res) => {
   const { userName } = req.body;
-  res.end(`Welcome :${userName}`);
+  res.send(`Welcome ${userName}`);
 });
 
 app.listen(port, () => {
