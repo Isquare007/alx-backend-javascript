@@ -1,6 +1,5 @@
 const request = require('request');
 const { expect } = require('chai');
-const { describe } = require('node:test');
 
 describe('Integration Testing', () => {
   describe('GET /', () => {
@@ -10,7 +9,7 @@ describe('Integration Testing', () => {
         method: 'GET',
       };
 
-      request(options, function (error, response, body) {
+      request(options, (error, response, body) => {
         expect(response.statusCode).to.equal(200);
         expect(body).to.equal('Welcome to the payment system');
         done();
