@@ -1,9 +1,15 @@
-function getPaymentTokenFromAPI(success) {
-  if (success) {
-    return Promise.resolve({ data: 'Successful response from the API' });
-  } else {
-    return Promise.resolve();
-  }
-}
+const getPaymentTokenFromAPI = require('./6-payment_token');
+var { expect } = require('chai');
 
-module.exports = { getPaymentTokenFromAPI };
+describe('getPaymentTokenFromAPI', function () {
+  describe('arg true', function () {
+    it('resolved correctly', function (done) {
+      getPaymentTokenFromAPI(true)
+        .then((res) => {
+          expect(res).to.include({ data: 'Successful response from the API' });
+          done();
+        })
+        .catch((err) => done(err));
+    });
+  });
+});
